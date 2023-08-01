@@ -1,0 +1,39 @@
+
+services:  
+  database:
+    image: postgres:14
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      #POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: anztor57
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+      - ./db:/tmp/dump
+      - ./scripts:/docker-entrypoint-initdb.d
+    mem_limit: 1g 
+    mem_reservation: 512m
+    networks:
+      - airportflights-network
+
+  airportflights:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - "database"
+    ports:
+      - "3000:80"     
+    environment:
+      ConnectionStrings__DefaultConnection: "host=database;port=5432;database=demo;username=postgres;password=anztor57"
+    mem_limit: 1g 
+    mem_reservation: 512m
+    networks:
+      - airportflights-network
+volumes:
+  db_volume:
+
+networks:
+  airportflights-network:
+    driver: bridge 
