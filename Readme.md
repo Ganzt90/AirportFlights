@@ -7,7 +7,7 @@ Using Entity Framework and Using Scaffold (reverse engineering) the database mod
 
 
 ### Database Schema Diagram
-![alt](https://github.com/Ganzt90/AirportFlights/blob/main/asset/demodb-bookings-schema.svg)
+![alt](./asset/demodb-bookings-schema.svg)
 
 
 ### Summary 
@@ -36,7 +36,7 @@ Find the init.bat file and run it as follows in the Visual Studio Code terminal,
 ```
 .\init.bat
 ```
-![alt](https://github.com/Ganzt90/AirportFlights/blob/main/asset/Options.png)
+![alt](./asset/Options.png)
 
 Once selected the option will download and restore the database backup with the selected size, then start the ASP .Net application with swagger enabled to easily test the endpoints, started at the following url:
 
